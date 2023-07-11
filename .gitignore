@@ -140,3 +140,5 @@ typechain-types
 cache
 artifacts
 
+# Foundry files
+cache_forge/
