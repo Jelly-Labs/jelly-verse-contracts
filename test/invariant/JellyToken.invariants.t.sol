@@ -10,13 +10,18 @@ contract InvariantJellyToken is StdInvariant, Test {
 
     uint256 internal constant cap = 1_000_000_000;
 
-    address internal owner = vm.addr(0x1);
-    address internal vesting = vm.addr(0x2);
-    address internal vestingJelly = vm.addr(0x3);
-    address internal allocator = vm.addr(0x3);
+    address internal owner;
+    address internal vesting;
+    address internal vestingJelly;
+    address internal allocator;
 
     function setUp() public {
-        jellyToken = new JellyToken(cap, vesting, vestingJelly, allocator);
+        owner = makeAddr("owner");
+        vesting = makeAddr("vesting");
+        vestingJelly = makeAddr("vestingJelly");
+        allocator = makeAddr("allocator");
+
+        jellyToken = new JellyToken(vesting, vestingJelly, allocator);
         targetContract(address(jellyToken));
     }
 

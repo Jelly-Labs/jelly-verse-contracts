@@ -8,13 +8,12 @@ contract JellyToken is ERC20Capped, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
   constructor(
-    uint256 _cap,
     address _vesting,
     address _vestingJelly,
     address _allocator
   )
   ERC20("Jelly Token", "JLY")
-  ERC20Capped(_cap * 10 ** 18) {
+  ERC20Capped(1_000_000_000 * 10 ** 18) {
     _mint(_vesting, 133_000_000 * 10 ** 18);
     _mint(_vestingJelly, 133_000_000 * 10 ** 18);
     _mint(_allocator, 133_000_000 * 10 ** 18);

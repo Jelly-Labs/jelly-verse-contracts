@@ -1,17 +1,22 @@
 import { ethers } from "hardhat";
+import { JellyToken, JellyToken__factory } from "../../typechain-types";
 
 export async function deployJellyToken() {
-  const cap = 1000000000;
-
   const [owner, otherAccount, vesting, vestingJelly, allocator] = await ethers.getSigners();
 
-  const JellyTokenFactory = await ethers.getContractFactory("JellyToken");
-  const jellyToken = await JellyTokenFactory.deploy(
-    cap,
+  const JellyTokenFactory: JellyToken__factory = await ethers.getContractFactory("JellyToken");
+  const jellyToken: JellyToken = await JellyTokenFactory.deploy(
     vesting.address,
     vestingJelly.address,
     allocator.address
   );
 
-  return {jellyToken, cap, owner, otherAccount, vesting, vestingJelly, allocator};
+  return {
+    jellyToken,
+    owner,
+    otherAccount,
+    vestingAddress: vesting.address,
+    vestingJellyAddress: vestingJelly.address,
+    allocatorAddress: allocator.address
+  };
 }
