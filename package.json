@@ -1,11 +1,12 @@
 {
   "name": "jelly-verse-contracts",
   "engines": {
-		"node": ">=18.0.0"
-	},
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-foundry": "^1.0.2",
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^4.9.2",
     "hardhat": "^2.16.1"
   }
 }
