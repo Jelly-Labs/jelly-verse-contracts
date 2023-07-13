@@ -66,8 +66,6 @@ describe("JellyToken", () => {
     });
 
     it("Reverts when the sender doesn't have MINTER_ROLE", async () => {
-      await jellyToken.connect(otherAccount).mint(otherAccount.address, 100);
-
       const address = otherAccount.address.toLowerCase();
       await expect(
         jellyToken.connect(otherAccount).mint(otherAccount.address, 100)
