@@ -5,6 +5,9 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {ERC20Capped} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
+/**
+ * @title The Jelly ERC20 contract
+ */
 contract JellyToken is ERC20Capped, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
@@ -23,10 +26,28 @@ contract JellyToken is ERC20Capped, AccessControl {
     _grantRole(MINTER_ROLE, msg.sender);
   }
 
+  /**
+   * @notice Mints specified amount of tokens to address.
+   *
+   * @dev Only addresses with MINTER_ROLE can call.
+   *
+   * @param address - address to mint tokens for.
+   *
+   * @param amount - amount of tokens to mint.
+   *
+   * No return, reverts on error.
+   */
   function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) {
     _mint(to, amount);
   }
 
+  /**
+   * @notice Burns tokens for sender.
+   *
+   * @param amount - amount of tokens to burn.
+   *
+   * No return, reverts on error.
+   */
   function burn(uint256 amount) external {
     _burn(msg.sender, amount);
   }
