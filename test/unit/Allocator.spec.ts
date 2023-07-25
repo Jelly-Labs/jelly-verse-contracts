@@ -74,6 +74,13 @@ describe("Allocator", () => {
         const balance = await jellyToken.balanceOf(otherAccount.address);
         expect(balance).to.eq(depositValue * dusdJellyRatio);
       });
+
+      it("Emits event when users buy jellyTokens", async () => {
+        const jellyAmount = depositValue * dusdJellyRatio;
+        await expect(allocator.connect(otherAccount).buyWithDusd(depositValue))
+          .to.emit(allocator, "BuyWithDusd")
+          .withArgs(depositValue, jellyAmount);
+      });
     });
 
     it("Reverts when jellyToken is not set", async () => {

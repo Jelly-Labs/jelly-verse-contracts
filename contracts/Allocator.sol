@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.9;
 
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
@@ -8,6 +8,8 @@ contract Allocator is Ownable {
   IERC20 public jellyToken;
   IERC20 public dusd;
   uint256 public dusdJellyRatio;
+
+  event BuyWithDusd(uint256 dusdAmount, uint256 jellyAmount);
 
   constructor(IERC20 _dusd, uint256 _dusdJellyRatio) {
     dusd = _dusd;
@@ -24,6 +26,7 @@ contract Allocator is Ownable {
 
     uint256 jellyAmount = amount * dusdJellyRatio;
     IERC20(jellyToken).transfer(msg.sender, jellyAmount);
+    emit BuyWithDusd(amount, jellyAmount);
   }
 
   function setJellyToken(IERC20 _jellyToken) external onlyOwner {
