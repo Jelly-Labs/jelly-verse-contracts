@@ -140,4 +140,4 @@ artifacts
 
 # Foundry files
 cache_forge/
-test/differential/target/
+target/

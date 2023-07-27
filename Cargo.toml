@@ -1,0 +1,10 @@
+[package]
+name = "vested-amount-differential-tests"
+version = "0.1.0"
+
+[[bin]]
+name = "vested-amount-ffi"
+path = "./main.rs"
+
+[dependencies]
+alloy-primitives = "0.3.0"

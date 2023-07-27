@@ -1,7 +1,8 @@
-extern crate ethers;
+extern crate alloy_primitives;
 
 use std::env;
-use ethers::types::U256;
+use alloy_primitives::U256;
+
 
 /**
  * 01 January 2024   = 1704067200
@@ -35,11 +36,10 @@ use ethers::types::U256;
  * totalDuration = 63113832
  */
 
-fn vested_amount(amount: U256, start_timestamp: u64, total_duration: u32, block_timestamp: u64) -> U256 {
-    let cliff_timestamp = start_timestamp + 15724800_u64;
+fn vested_amount(amount: U256, start_timestamp: u64, cliff_timestamp: u64, total_duration: u32, block_timestamp: u64) -> U256 {
     if block_timestamp < cliff_timestamp {
         return U256::from(0_u32);
-    } else if block_timestamp >= start_timestamp + total_duration as u64 {
+    } else if block_timestamp >= (start_timestamp + total_duration as u64) {
         return amount;
     } else {
         return amount * U256::from(block_timestamp - start_timestamp) / U256::from(total_duration);
@@ -51,10 +51,12 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
     let start_timestamp: u64 = args[1].parse().unwrap();
-    let total_duration: u32 = args[2].parse().unwrap();
-    let block_timestamp: u64 = args[3].parse().unwrap();
+    let cliff_timestamp: u64 = args[2].parse().unwrap();
+    let total_duration: u32 = args[3].parse().unwrap();
+    let block_timestamp: u64 = args[4].parse().unwrap();
 
-    let vested_amount = vested_amount(amount, start_timestamp, total_duration, block_timestamp);
+    let vested_amount = vested_amount(amount, start_timestamp, cliff_timestamp, total_duration, block_timestamp);
 
-    println!("{}", vested_amount);
+    print!("{:#x}", vested_amount);
 }
+
