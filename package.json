@@ -1,12 +1,16 @@
 {
-  "name": "jelly-verse-contracts",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "devDependencies": {
-    "@nomicfoundation/hardhat-foundry": "^1.0.2",
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "@openzeppelin/contracts": "^4.9.2",
-    "hardhat": "^2.16.1"
-  }
+	"name": "jelly-verse-contracts",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"devDependencies": {
+		"@ethereum-waffle/mock-contract": "^4.0.4",
+		"@nomicfoundation/hardhat-chai-matchers": "^1.0.2",
+		"@nomicfoundation/hardhat-foundry": "^1.0.2",
+		"@nomicfoundation/hardhat-network-helpers": "^1.0.3",
+		"@nomicfoundation/hardhat-toolbox": "^1.0.2",
+		"@openzeppelin/contracts": "^4.9.2",
+		"ethers": "^5.6.9",
+		"hardhat": "^2.16.1"
+	}
 }

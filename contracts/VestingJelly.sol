@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 import {VestingLib} from "./utils/VestingLib.sol";
 
-contract Vesting is VestingLib {
+contract VestingJelly is VestingLib {
     constructor(
         uint256 _amount,
         address _beneficiary,
