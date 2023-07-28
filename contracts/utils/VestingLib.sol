@@ -64,8 +64,10 @@ abstract contract VestingLib is Ownable, ReentrancyGuard {
         uint256 _startTimestamp,
         uint32 _cliffDuration,
         uint32 _vestingDuration,
-        address _token
-    ) {
+        address _token,
+        address _owner,
+        address _pendingOwner
+    ) Ownable(_owner, _pendingOwner) {
         if (_beneficiary == address(0)) revert Vesting__ZeroAddress();
         if (_revoker == address(0)) revert Vesting__ZeroAddress();
         if (_cliffDuration <= 0) revert Vesting__InvalidDuration();

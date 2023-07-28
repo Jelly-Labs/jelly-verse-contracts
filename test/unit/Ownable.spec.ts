@@ -1,20 +1,16 @@
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { assert, expect } from 'chai';
-// import { constants } from 'ethers';
+import { constants } from 'ethers';
 import { ethers } from 'hardhat';
-import { Ownable } from '../../typechain-types';
-
-export const constants = {
-	AddressZero: '0x0000000000000000000000000000000000000000',
-};
+import { Ownable, OwnableMock } from '../../typechain-types';
 
 describe('Ownable Unit Tests', async function () {
 	async function deployOwnableUnitFixture() {
 		const [deployer, user] = await ethers.getSigners();
 
 		const ownableFactory = await ethers.getContractFactory('OwnableMock');
-		const ownable: Ownable = await ownableFactory.deploy(
+		const ownable: OwnableMock = await ownableFactory.deploy(
 			deployer.address,
 			constants.AddressZero
 		);
@@ -22,7 +18,7 @@ describe('Ownable Unit Tests', async function () {
 		return { ownable, deployer, user };
 	}
 
-	let ownable: Ownable;
+	let ownable: OwnableMock;
 	let owner: SignerWithAddress;
 	let newOwner: SignerWithAddress;
 

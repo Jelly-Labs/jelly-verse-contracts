@@ -11,7 +11,9 @@ contract VestingJelly is VestingLib {
         uint256 _startTimestamp,
         uint32 _cliffDuration,
         uint32 _vestingDuration,
-        address _token
+        address _token,
+        address _owner,
+        address _pendingOwner
     )
         VestingLib(
             _amount,
@@ -20,7 +22,9 @@ contract VestingJelly is VestingLib {
             _startTimestamp,
             _cliffDuration,
             _vestingDuration,
-            _token
+            _token,
+            _owner,
+            _pendingOwner
         )
     {}
 }

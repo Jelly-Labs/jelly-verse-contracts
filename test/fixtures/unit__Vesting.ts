@@ -2,7 +2,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { Vesting, Vesting__factory } from '../../typechain-types';
 import { getSigners } from '../shared/utils';
 import { ethers } from 'hardhat';
-import { BigNumber } from 'ethers';
+import { BigNumber, constants } from 'ethers';
 import { MockContract } from '@ethereum-waffle/mock-contract';
 import { deployMockJelly } from '../shared/mocks';
 
@@ -18,7 +18,7 @@ type UnitVestingFixtureType = {
 };
 
 export async function unitVestingFixture(): Promise<UnitVestingFixtureType> {
-	const { deployer, beneficiary, revoker } = await getSigners();
+	const { deployer, ownerMultiSig, beneficiary, revoker } = await getSigners();
 
 	const amount: BigNumber = ethers.utils.parseEther(`133000000`);
 	const cliffDuration: number = 15778458; // 6 months
@@ -37,7 +37,9 @@ export async function unitVestingFixture(): Promise<UnitVestingFixtureType> {
 		startTimestamp,
 		cliffDuration,
 		vestingDuration,
-		mockJelly.address
+		mockJelly.address,
+		ownerMultiSig.address,
+		constants.AddressZero
 	);
 
 	return {
