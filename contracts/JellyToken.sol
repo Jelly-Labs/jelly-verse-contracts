@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.9;
 
-import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {ERC20Capped} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
+import {ERC20, ERC20Capped} from "./vendor/openzeppelin/v4.9.0/token/ERC20/extensions/ERC20Capped.sol";
+import {AccessControl} from "./vendor/openzeppelin/v4.9.0/access/AccessControl.sol";
 
 /**
  * @title The Jelly ERC20 contract

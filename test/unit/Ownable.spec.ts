@@ -62,7 +62,10 @@ describe('Ownable Unit Tests', async function () {
 				const ownableFactory = await ethers.getContractFactory('OwnableMock');
 				await expect(
 					ownableFactory.deploy(constants.AddressZero, constants.AddressZero)
-				).to.be.revertedWithCustomError(ownable, 'CannotSetOwnerToZeroAddress');
+				).to.be.revertedWithCustomError(
+					ownable,
+					'Ownable__CannotSetOwnerToZeroAddress'
+				);
 			});
 		});
 	});
@@ -94,19 +97,25 @@ describe('Ownable Unit Tests', async function () {
 			it('should revert if caller is not an owner', async function () {
 				await expect(
 					ownable.connect(newOwner).transferOwnership(newOwner.address)
-				).to.be.revertedWithCustomError(ownable, 'CallerIsNotOwner');
+				).to.be.revertedWithCustomError(ownable, 'Ownable__CallerIsNotOwner');
 			});
 
 			it('should revert if address of a new address is zero', async function () {
 				await expect(
 					ownable.connect(owner).transferOwnership(constants.AddressZero)
-				).to.be.revertedWithCustomError(ownable, 'CannotSetOwnerToZeroAddress');
+				).to.be.revertedWithCustomError(
+					ownable,
+					'Ownable__CannotSetOwnerToZeroAddress'
+				);
 			});
 
 			it('should revert if new owner is owner', async function () {
 				await expect(
 					ownable.connect(owner).transferOwnership(owner.address)
-				).to.be.revertedWithCustomError(ownable, 'CannotTransferToSelf');
+				).to.be.revertedWithCustomError(
+					ownable,
+					'Ownable__CannotTransferToSelf'
+				);
 			});
 		});
 	});
@@ -143,7 +152,10 @@ describe('Ownable Unit Tests', async function () {
 				await prepare();
 				await expect(
 					ownable.connect(owner).acceptOwnership()
-				).to.be.revertedWithCustomError(ownable, 'MustBeProposedOwner');
+				).to.be.revertedWithCustomError(
+					ownable,
+					'Ownable__MustBeProposedOwner'
+				);
 			});
 		});
 	});
@@ -178,7 +190,7 @@ describe('Ownable Unit Tests', async function () {
 				await prepare();
 				await expect(
 					ownable.connect(newOwner).cancelOwnershipTransfer()
-				).to.be.revertedWithCustomError(ownable, 'CallerIsNotOwner');
+				).to.be.revertedWithCustomError(ownable, 'Ownable__CallerIsNotOwner');
 			});
 		});
 	});

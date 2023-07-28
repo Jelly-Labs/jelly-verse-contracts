@@ -14,7 +14,9 @@ contract VestingTest is VestingLib {
         uint256 _startTimestamp,
         uint32 _cliffDuration,
         uint32 _vestingDuration,
-        address _token
+        address _token,
+        address _owner,
+        address _pendingOwner
     )
         VestingLib(
             _amount,
@@ -23,7 +25,9 @@ contract VestingTest is VestingLib {
             _startTimestamp,
             _cliffDuration,
             _vestingDuration,
-            _token
+            _token,
+            _owner,
+            _pendingOwner
         )
     {}
 }
@@ -42,6 +46,7 @@ contract VestedAmountDifferentialTest is Test {
         uint256 amount = 133_000_000 * 10 ** 18;
         address beneficiary = makeAddr("beneficiary");
         address revoker = makeAddr("revoker");
+        address owner = makeAddr("owner");
         uint32 cliffDuration = 15778458; // 6 months
         uint32 vestingDuration = 47335374; // 18 months
 
@@ -62,7 +67,9 @@ contract VestedAmountDifferentialTest is Test {
             startTimestamp,
             cliffDuration,
             vestingDuration,
-            address(jellyToken)
+            address(jellyToken),
+            owner,
+            address(0)
         );
     }
 

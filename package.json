@@ -1,5 +1,11 @@
 {
 	"name": "jelly-verse-contracts",
+	"scripts": {
+		"compile": "npx hardhat compile",
+		"hardhat-test": "TS_TRANSPILE_NODE=1 npx hardhat test",
+		"forge-test": "forge test",
+		"test": "npm run hardhat-test && npm run forge-test"
+	},
 	"engines": {
 		"node": ">=18.0.0"
 	},
@@ -9,7 +15,7 @@
 		"@nomicfoundation/hardhat-foundry": "^1.0.2",
 		"@nomicfoundation/hardhat-network-helpers": "^1.0.3",
 		"@nomicfoundation/hardhat-toolbox": "^1.0.2",
-		"@openzeppelin/contracts": "^4.9.2",
+		"@openzeppelin/contracts": "^4.9.0",
 		"ethers": "^5.6.9",
 		"hardhat": "^2.16.1"
 	}
