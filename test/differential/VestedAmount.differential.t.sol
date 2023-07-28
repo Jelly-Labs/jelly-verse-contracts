@@ -84,7 +84,7 @@ contract VestedAmountDifferentialTest is Test {
     }
 
     function test_vestedAmount(uint256 numberOfSeconds) external {
-        vm.assume(numberOfSeconds < totalDuration * 2);
+        vm.assume(numberOfSeconds < totalDuration * 20); // 40 years for claiming
         vm.warp(numberOfSeconds);
 
         uint256 vestedAmountSol = vestingLib.vestedAmount();
