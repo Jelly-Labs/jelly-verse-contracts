@@ -9,7 +9,7 @@ import {ReentrancyGuard} from "../vendor/openzeppelin/v4.9.0/security/Reentrancy
 
 /**
  * @title Vesting
- * @notice Simple Vesting Contract
+ * @notice Vesting Library
  *
  *  token amount
  *       ^
