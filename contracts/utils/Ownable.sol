@@ -19,7 +19,7 @@ abstract contract Ownable {
     error Ownable__CannotTransferToSelf();
 
     modifier onlyOwner() {
-        _checkOwner();
+        if (msg.sender != _owner) revert Ownable__CallerIsNotOwner();
         _;
     }
 
@@ -92,10 +92,6 @@ abstract contract Ownable {
      */
     function getPendingOwner() public view returns (address) {
         return _pendingOwner;
-    }
-
-    function _checkOwner() internal view {
-        if (msg.sender != owner()) revert Ownable__CallerIsNotOwner();
     }
 
     function _transferOwnership(address newOwner) private {
