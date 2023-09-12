@@ -1,5 +1,6 @@
 {
 	"name": "jelly-verse-contracts",
+	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"compile": "npx hardhat compile",
 		"hardhat-test": "TS_TRANSPILE_NODE=1 npx hardhat test",

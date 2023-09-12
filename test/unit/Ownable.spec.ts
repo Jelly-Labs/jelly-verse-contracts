@@ -3,7 +3,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { assert, expect } from 'chai';
 import { constants } from 'ethers';
 import { ethers } from 'hardhat';
-import { Ownable, OwnableMock } from '../../typechain-types';
+import { OwnableMock } from '../../typechain-types';
 
 describe('Ownable Unit Tests', async function () {
 	async function deployOwnableUnitFixture() {

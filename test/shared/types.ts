@@ -1,11 +1,11 @@
 import { MockContract } from '@ethereum-waffle/mock-contract';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
-import { JellyToken, Vesting } from '../../typechain-types';
+import { JellyToken } from '../../typechain-types';
 
 declare module 'mocha' {
 	export interface Context {
 		jellyToken: JellyToken;
-		vesting: Vesting;
+		// vesting: Vesting;
 		signers: Signers;
 		mocks: Mocks;
 	}
@@ -22,4 +22,8 @@ export interface Signers {
 
 export interface Mocks {
 	mockJelly: MockContract;
+	mockAllocator: MockContract;
+	mockVestingTeam: MockContract;
+	mockVestingInvestor: MockContract;
+	mockMinterContract: MockContract;
 }

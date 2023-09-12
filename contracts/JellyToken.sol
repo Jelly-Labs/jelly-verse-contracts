@@ -18,13 +18,13 @@ import {ReentrancyGuard} from "./vendor/openzeppelin/v4.9.0/security/ReentrancyG
  *
  */
 contract JellyToken is ERC20Capped, AccessControl, ReentrancyGuard {
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+    bytes32 constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     bool internal preminted;
 
     event Preminted(
-        address indexed vesting,
-        address indexed vestingJelly,
+        address indexed vestingTeam,
+        address indexed vestingInvestor,
         address indexed allocator
     );
 
@@ -48,19 +48,21 @@ contract JellyToken is ERC20Capped, AccessControl, ReentrancyGuard {
     }
 
     function premint(
-        address _vesting,
-        address _vestingJelly,
+        address _vestingTeam,
+        address _vestingInvestor,
         address _allocator,
         address _minterContract
     ) external onlyRole(MINTER_ROLE) onlyOnce nonReentrant {
-        _mint(_vesting, 133_000_000 * 10 ** decimals());
-        _mint(_vestingJelly, 133_000_000 * 10 ** decimals());
+        preminted = true;
+
+        _mint(_vestingTeam, 133_000_000 * 10 ** decimals());
+        _mint(_vestingInvestor, 133_000_000 * 10 ** decimals());
         _mint(_allocator, 133_000_000 * 10 ** decimals());
 
         _grantRole(MINTER_ROLE, _allocator);
         _grantRole(MINTER_ROLE, _minterContract);
 
-        emit Preminted(_vesting, _vestingJelly, _allocator);
+        emit Preminted(_vestingTeam, _vestingInvestor, _allocator);
     }
 
     /**
