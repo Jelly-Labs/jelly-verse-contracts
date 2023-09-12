@@ -4,10 +4,6 @@ import { JellyToken, JellyToken__factory } from '../../typechain-types';
 
 type UnitJellyTokenFixtureType = {
 	jellyToken: JellyToken;
-	// mockAllocatorAddress: string;
-	// mockVestingTeamAddress: string;
-	// mockVestingInvestorAddress: string;
-	// mockMinterContractAddress: string;
 };
 
 export async function deployJellyTokenFixture(): Promise<UnitJellyTokenFixtureType> {
