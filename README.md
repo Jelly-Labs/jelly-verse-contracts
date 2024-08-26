@@ -2525,6 +2525,566 @@ There is a set of Differential tests to confirm that the calculation for the ves
 
 ![vesting](./docs/VestingCliff.png)
 
+
+## Lottery
+
+
+### Contract Overview
+
+Contract for distrubtiong chests
+
+### Dependencies
+
+**Inherits:**
+[Ownable](/contracts/utils/Ownable.sol)
+
+### numberOfRewards
+
+```solidity
+uint96 numberOfRewards
+```
+
+### numberOfDragonChests
+
+```solidity
+uint96 numberOfDragonChests
+```
+
+### numberOfGoldenChests
+
+```solidity
+uint96 numberOfGoldenChests
+```
+
+### numberOfSilverChests
+
+```solidity
+uint96 numberOfSilverChests
+```
+
+### numberOfBronzeChests
+
+```solidity
+uint96 numberOfBronzeChests
+```
+
+### numberOfJellyBits
+
+```solidity
+uint96 numberOfJellyBits
+```
+
+### dragonBallContract
+
+```solidity
+address dragonBallContract
+```
+
+### chestContract
+
+```solidity
+address chestContract
+```
+
+### jellyToken
+
+```solidity
+address jellyToken
+```
+
+### DRAGON_AMOUNT
+
+```solidity
+uint256 DRAGON_AMOUNT
+```
+
+### GOLDEN_AMOUNT
+
+```solidity
+uint256 GOLDEN_AMOUNT
+```
+
+### SILVER_AMOUNT
+
+```solidity
+uint256 SILVER_AMOUNT
+```
+
+### BRONZE_AMOUNT
+
+```solidity
+uint256 BRONZE_AMOUNT
+```
+
+### JELLY_AMOUNT
+
+```solidity
+uint256 JELLY_AMOUNT
+```
+
+### ChestsAdded
+
+```solidity
+event ChestsAdded(uint96 numberOfDragonChests, uint96 numberOfGoldenChests, uint96 numberOfSilverChests, uint96 numberOfBronzeChests, uint96 numberOfJellyBits)
+```
+
+### DragonChestAwarded
+
+```solidity
+event DragonChestAwarded()
+```
+
+### GoldenChestAwarded
+
+```solidity
+event GoldenChestAwarded()
+```
+
+### SilverChestAwarded
+
+```solidity
+event SilverChestAwarded()
+```
+
+### BronzeChestAwarded
+
+```solidity
+event BronzeChestAwarded()
+```
+
+### JellyBitsAwarded
+
+```solidity
+event JellyBitsAwarded()
+```
+
+### PrizeAwarded
+
+```solidity
+event PrizeAwarded()
+```
+
+### Lottery__LenMissmatch
+
+```solidity
+error Lottery__LenMissmatch()
+```
+
+### Lottery__NotOwner
+
+```solidity
+error Lottery__NotOwner()
+```
+
+### Lottery__WrongIDs
+
+```solidity
+error Lottery__WrongIDs()
+```
+
+### constructor
+
+```solidity
+constructor(address _owner, address _pendingOwner, address _dragonBallContract, address _chestContract, address _jellyToken) public
+```
+
+### burnBalls
+
+```solidity
+function burnBalls(uint256[] _ids) public
+```
+
+Burn balls to get chest
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _ids | uint256[] | - ids of chest the user wants to burn No return value |
+
+### addChests
+
+```solidity
+function addChests(uint96 _numberOfDragonChests, uint96 _numberOfGoldenChests, uint96 _numberOfSilverChests, uint96 _numberOfBronzeChests, uint96 _numberOfJellyBits) public
+```
+
+add chests to the lottery
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _numberOfDragonChests | uint96 | - number of dragon chests to add |
+| _numberOfGoldenChests | uint96 | - number of golden chests to add |
+| _numberOfSilverChests | uint96 | - number of silver chests to add |
+| _numberOfBronzeChests | uint96 | - number of bronze chests to add No return only owner can call |
+| _numberOfJellyBits | uint96 |  |
+
+### _getRadomNumber
+
+```solidity
+function _getRadomNumber() internal view returns (uint256)
+```
+
+### _awardChest
+
+```solidity
+function _awardChest() internal
+```
+
+### _awardDragonChest
+
+```solidity
+function _awardDragonChest() internal
+```
+
+### _awardGoldenChest
+
+```solidity
+function _awardGoldenChest() internal
+```
+
+### _awardSilverChest
+
+```solidity
+function _awardSilverChest() internal
+```
+
+### _awardBronzeChest
+
+```solidity
+function _awardBronzeChest() internal
+```
+
+### _awardJellyBits
+
+```solidity
+function _awardJellyBits() internal
+```
+
+## DragonBall
+
+### Contract Overview
+
+Contract for DragonBall nfts
+
+### index
+
+```solidity
+uint256 index
+```
+
+### numberOfBall
+
+```solidity
+mapping(uint256 => uint8) numberOfBall
+```
+
+### lotteryContract
+
+```solidity
+address lotteryContract
+```
+
+### NewBall
+
+```solidity
+event NewBall(uint256 index, uint8 numberOfBall, address beneficiary)
+```
+
+### BallBurned
+
+```solidity
+event BallBurned(uint256 tokenId)
+```
+
+### LotteryContractSet
+
+```solidity
+event LotteryContractSet(address lotteryContract)
+```
+
+### DragonBall_NotAllowed
+
+```solidity
+error DragonBall_NotAllowed()
+```
+
+### constructor
+
+```solidity
+constructor(address _owner, address _pendingOwner) public
+```
+
+### mint
+
+```solidity
+function mint(uint8 _numberOfBall, address _beneficiary) public
+```
+
+Mint new ball
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _numberOfBall | uint8 | - number of ball |
+| _beneficiary | address | - address of beneficiary No return only Owner can call |
+
+### burn
+
+```solidity
+function burn(uint256 _tokenId) public
+```
+
+Burn ball
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _tokenId | uint256 | - id of token No return only Lottery contract can call |
+
+### getBallNumber
+
+```solidity
+function getBallNumber(uint256 _tokenId) public view returns (uint8)
+```
+
+Get ball number
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _tokenId | uint256 | - id of token |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | uint8 | number of ball |
+
+### setLotteryContract
+
+```solidity
+function setLotteryContract(address _lotteryContract) public
+```
+
+Set lottery contract
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| _lotteryContract | address | - address of lottery contract No return only Owner can call |
+
+
+## Api3RateProvider
+
+### proxy
+
+```solidity
+address proxy
+```
+
+### name
+
+```solidity
+string name
+```
+
+### constructor
+
+```solidity
+constructor(address _proxy, string _name) public
+```
+
+### getRate
+
+```solidity
+function getRate() external view returns (uint256)
+```
+
+## ISEIRateProvider
+
+### WASMD_PRECOMPILE_ADDRESS
+
+```solidity
+address WASMD_PRECOMPILE_ADDRESS
+```
+
+### JSON_PRECOMPILE_ADDRESS
+
+```solidity
+address JSON_PRECOMPILE_ADDRESS
+```
+
+### ADDR_PRECOMPILE_ADDRESS
+
+```solidity
+address ADDR_PRECOMPILE_ADDRESS
+```
+
+### Cw20Address
+
+```solidity
+string Cw20Address
+```
+
+### WasmdPrecompile
+
+```solidity
+contract IWasmd WasmdPrecompile
+```
+
+### JsonPrecompile
+
+```solidity
+contract IJson JsonPrecompile
+```
+
+### AddrPrecompile
+
+```solidity
+contract IAddr AddrPrecompile
+```
+
+### constructor
+
+```solidity
+constructor(string Cw20Address_) public
+```
+
+### getRate
+
+```solidity
+function getRate() external view returns (uint256)
+```
+
+### _formatPayload
+
+```solidity
+function _formatPayload(string key, string value) internal pure returns (string)
+```
+
+### _curlyBrace
+
+```solidity
+function _curlyBrace(string s) internal pure returns (string)
+```
+
+### _doubleQuotes
+
+```solidity
+function _doubleQuotes(string s) internal pure returns (string)
+```
+
+### _join
+
+```solidity
+function _join(string a, string b, string separator) internal pure returns (string)
+```
+
+### _stringToUint
+
+```solidity
+function _stringToUint(string s) internal pure returns (uint256 result)
+```
+
+## ADDR_PRECOMPILE_ADDRESS
+
+```solidity
+address ADDR_PRECOMPILE_ADDRESS
+```
+
+## ADDR_CONTRACT
+
+```solidity
+contract IAddr ADDR_CONTRACT
+```
+
+## IAddr
+
+### getSeiAddr
+
+```solidity
+function getSeiAddr(address addr) external view returns (string response)
+```
+
+### getEvmAddr
+
+```solidity
+function getEvmAddr(string addr) external view returns (address response)
+```
+
+## JSON_PRECOMPILE_ADDRESS
+
+```solidity
+address JSON_PRECOMPILE_ADDRESS
+```
+
+## JSON_CONTRACT
+
+```solidity
+contract IJson JSON_CONTRACT
+```
+
+## IJson
+
+### extractAsBytes
+
+```solidity
+function extractAsBytes(bytes input, string key) external view returns (bytes response)
+```
+
+### extractAsBytesList
+
+```solidity
+function extractAsBytesList(bytes input, string key) external view returns (bytes[] response)
+```
+
+### extractAsUint256
+
+```solidity
+function extractAsUint256(bytes input, string key) external view returns (uint256 response)
+```
+
+## WASMD_PRECOMPILE_ADDRESS
+
+```solidity
+address WASMD_PRECOMPILE_ADDRESS
+```
+
+## WASMD_CONTRACT
+
+```solidity
+contract IWasmd WASMD_CONTRACT
+```
+
+## IWasmd
+
+### instantiate
+
+```solidity
+function instantiate(uint64 codeID, string admin, bytes payload, string label, bytes coins) external returns (string contractAddr, bytes data)
+```
+
+### execute
+
+```solidity
+function execute(string contractAddress, bytes payload, bytes coins) external returns (bytes response)
+```
+
+### query
+
+```solidity
+function query(string contractAddress, bytes req) external view returns (bytes response)
+```
+
+
+
+
 ## Additional docs
 Governance documentation and contract differances from openzeppelin can be found [here](./docs/Governance.md)
 

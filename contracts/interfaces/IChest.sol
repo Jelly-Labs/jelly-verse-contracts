@@ -11,17 +11,28 @@ interface IChest {
     /**
      * @dev Emitted when an account changes their delegate.
      */
-    event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
+    event DelegateChanged(
+        address indexed delegator,
+        address indexed fromDelegate,
+        address indexed toDelegate
+    );
 
     /**
      * @dev Emitted when a token transfer or delegate change results in changes to a delegate's number of votes.
      */
-    event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
+    event DelegateVotesChanged(
+        address indexed delegate,
+        uint256 previousBalance,
+        uint256 newBalance
+    );
 
     /**
      * @dev Returns the current amount of votes that `account` has.
      */
-    function getVotingPower(address account, uint256[] calldata tokenIds) external view returns (uint256);
+    function getVotingPower(
+        address account,
+        uint256[] calldata tokenIds
+    ) external view returns (uint256);
 
     /**
      * @dev Returns the amount of votes that `account` had at a specific moment in the past. If the `clock()` is
@@ -37,7 +48,9 @@ interface IChest {
      * Votes that have not been delegated are still part of total supply, even though they would not participate in a
      * vote.
      */
-    function getPastTotalSupply(uint256 timepoint) external view returns (uint256);
+    function getPastTotalSupply(
+        uint256 timepoint
+    ) external view returns (uint256);
 
     /**
      * @dev Returns the delegate that `account` has chosen.
@@ -52,13 +65,19 @@ interface IChest {
     /**
      * @dev Delegates votes from signer to `delegatee`.
      */
-    function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external;
+    function delegateBySig(
+        address delegatee,
+        uint256 nonce,
+        uint256 expiry,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external;
 
-
-/**
+    /**
      * @dev Mints special chest.
      */
-     function stakeSpecial(
+    function stakeSpecial(
         uint256 amount,
         address beneficiary,
         uint32 freezingPeriod,
@@ -66,5 +85,14 @@ interface IChest {
         uint8 nerfParameter
     ) external;
 
-     function fee() external view returns (uint256);
+    function stake(
+      uint256 amount,
+        address beneficiary,
+        uint32 freezingPeriod
+    ) external;
+    /**
+     * @dev Returns the fee for creating a chest.
+     */
+
+    function fee() external view returns (uint256);
 }
