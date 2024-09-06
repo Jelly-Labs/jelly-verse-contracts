@@ -63,7 +63,7 @@ sequenceDiagram
             C->>C: _transfer(zeroAddress, remainingAmount)
             C->>D: Confirm transfer
             D->>A: Confirm claim
-            Note over A: User has received 750 JLY tokens <br/>(calculated amount based on linerar decresing percentage) <br/> and has 0 JLY in vesting contract (burned 250 JLY)
+            Note over A: User has received 750 JLY tokens <br/>(calculated amount based on linear decreasing percentage) <br/> and has 0 JLY in vesting contract (burned 250 JLY)
         end
     end
 ```

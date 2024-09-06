@@ -3,8 +3,8 @@
 The governance contract is responsible for managing the voting process for proposals. It is also responsible for executing the proposals once the voting period has ended. Contracts are mostly openzeppelin contracts with some modifications to fit the needs of the Jelly Protocol, like Voting with Chest powers, and open proposals.
 
 ## Changes from OpenZeppelin contracts v4.9.0
-### GovernorSettings.sol (extentions folder)
-Changes to OpenZeppelin's governace/extentions/GovernorSettings.sol
+### GovernorSettings.sol (extensions folder)
+Changes to OpenZeppelin's governance/extensions/GovernorSettings.sol
 1. Only difference is that we removed 3 functions for setting min voting delay, period and proposal threshold (don't need them there is proposeCustom function in Governor.sol). Removed functions:
 ```
     /**
@@ -35,8 +35,8 @@ Changes to OpenZeppelin's governace/extentions/GovernorSettings.sol
     }
 ```
 
-### GovernorTimelockControl.sol (extentions folder)
-Changes to OpenZeppelin's governace/extentions/GovernorTimelockControl.sol
+### GovernorTimelockControl.sol (extensions folder)
+Changes to OpenZeppelin's governance/extensions/GovernorTimelockControl.sol
 1. Only difference is that we modified _cancel function to remove check if proposal should be canceled in timelock as well. It's removed because proposal can't be canceled if already in timelock. Modified functions:
 ```
     function _cancel(
@@ -56,8 +56,8 @@ Changes to OpenZeppelin's governace/extentions/GovernorTimelockControl.sol
     }
 ```
 
-### GovernorCountingSimple.sol (extentions folder)
-Same as OpenZeppelin's governace/extentions/GovernorCountingSimple.sol, just our Governor.sol is imported
+### GovernorCountingSimple.sol (extensions folder)
+Same as OpenZeppelin's governance/extensions/GovernorCountingSimple.sol, just our Governor.sol is imported
 
 
 ### Governor.sol

@@ -2,7 +2,7 @@
 ## Characteristics
 
 - JLY tokens can be bought with USDT 
-    - USDT should be deposited to the USDT-JLY pool (along with appropiate amount of JLY, based on rate)
+    - USDT should be deposited to the USDT-JLY pool (along with appropriate amount of JLY, based on rate)
 
 
 ## Sequence Diagrams

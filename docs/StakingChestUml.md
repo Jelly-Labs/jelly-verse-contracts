@@ -8,13 +8,13 @@ Flow Chart screenshot:
 ![chestsFlowCHart.png](./chestsFlowChart.svg)
 ## Characteristics
 
-- Needs to be have staking, freezing, increasing stake amount/freezePeriod and unstaking
+- Needs to have staking, freezing, increasing stake amount/freezePeriod and unstaking
 - Needs to be able to calculate voting power and rewards
 - Needs to create NFT (Chest) which represents the staking position
 
 ## Sequence Diagrams
 
-1. Staking JLY tokens flow (recieved Chest can be frozen or open)
+1. Staking JLY tokens flow (received Chest can be frozen or open)
 
 Reference:
 `The users should be able to open a new staking position, which is represented by an NFT. They can deposit JLY to that NFT and set a freezing period.`
@@ -53,10 +53,10 @@ sequenceDiagram
     Note over A: Needs to approve tokens before staking
     A->>B: Clicks approve button
     B->>B: Create approve tx 
-    B->>C: Request to sing and submit created tx
+    B->>C: Request to sign and submit created tx
     B->>B: Listen for Approval event
-    C->>A: Request to Sing tx
-    A->>C: Sings and submits tx
+    C->>A: Request to sign tx
+    A->>C: Signs and submits tx
     C->>D: Call approve function
     D->>D: _approve(stakingAddress, amount)
     D->>B: Approval Event emitted
@@ -65,10 +65,10 @@ sequenceDiagram
     Note over A: Can now stake tokens
     A->>B: Click stake button
     B->>B: Create staking Tx
-    B->>C: Request to sing and submit created tx
+    B->>C: Request to sign and submit created tx
     B->>B: Listen for Staking event
-    C->>A: Request to Sing tx
-    A->>C: Sings and submits tx
+    C->>A: Request to sign tx
+    A->>C: Signs and submits tx
     C->>E: Call stake function
     E-->>D: Transfer tokens from user to staking contract
     D->>D: _transferFrom(userAddress, stakingAddress, amount)
@@ -127,7 +127,7 @@ sequenceDiagram
     A->>B: Approves token spend
     B->>B: _approve(StakingAddress, amountToStake)
     B->>A: Emit approved event 
-    Note over A: Can now inrease stake
+    Note over A: Can now increase stake
     A->>C: Increase Chest Stake Amount
     C->>B: Transfer user JLY tokens to staking contract
     B->>B: _transferFrom(userAddress, stakingAddress, amountToStake)
