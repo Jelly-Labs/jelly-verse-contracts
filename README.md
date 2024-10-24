@@ -1462,7 +1462,7 @@ error PoolParty__ZeroValue()
 
 ### Contract Overview
 
-OfficialPoolsRegister stores identifiers for all official pools. OOffical pools are special type of pools that have additional rewards distributed to the users that provide liquidty to them. The contract is used to store all of the special pools ids on chain which is than used by an off chain script to calculate the rewards for users. It is mainly used as a single source of truth on chain on which pools are official and how much rewards are given to them.
+OfficialPoolsRegister stores identifiers for all official pools. Official pools are special type of pools that have additional rewards distributed to the users that provide liquidity to them. The contract is used to store all of the special pools ids on chain which is than used by an off chain script to calculate the rewards for users. It is mainly used as a single source of truth on chain on which pools are official and how much rewards are given to them.
 
 
 ### Dependencies
